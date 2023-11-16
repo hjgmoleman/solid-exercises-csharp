@@ -3,7 +3,8 @@ using CapeAcademy.SolidPrinciples.Repositories;
 
 namespace CapeAcademy.SolidPrinciples.Services;
 
-public class StudentService
+public class StudentService(IStudentRepository studentRepository, IUniversityRepository universityRepository)
+    : IStudentService
 {
     public bool Add(string? emailAddress, Guid universityId)
     {       
@@ -14,13 +15,11 @@ public class StudentService
             return false;
         }
  
-        var studentRepository = new StudentRepository();
         if (studentRepository.Exists(emailAddress))
         {
             return false;
         }
  
-        var universityRepository = new UniversityRepository();
         var university = universityRepository.GetById(universityId);
  
         var student = new Student(emailAddress, universityId);

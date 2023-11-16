@@ -2,7 +2,7 @@ using CapeAcademy.SolidPrinciples.Entities;
 
 namespace CapeAcademy.SolidPrinciples.Repositories;
 
-public class StudentRepository
+public class StudentRepository : IStudentRepository
 {
     public void Add(Student student)
     {
