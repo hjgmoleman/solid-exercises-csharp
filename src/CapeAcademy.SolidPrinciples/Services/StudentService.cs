@@ -23,8 +23,7 @@ public class StudentService
         var universityRepository = new UniversityRepository();
         var university = universityRepository.GetById(universityId);
  
-        var student = new Student(emailAddress, universityId);
-         
+        var student = new Student(emailAddress, university.Id);
         if (university.UniversityPackage == UniversityPackage.Standard)
         {
             student.MonthlyEbookAllowance = 10;
