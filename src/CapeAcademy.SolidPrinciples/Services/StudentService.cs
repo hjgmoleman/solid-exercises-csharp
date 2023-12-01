@@ -39,7 +39,10 @@ public class StudentService
         var students = GetStudentsByUniversity(university.Id);
         foreach (var student in students)
         {
-            student.AddBonusAllowance();
+            if (student is LimitedStudent limitedStudent)
+            {
+                limitedStudent.AddBonusAllowance();
+            }
         }
     }
    

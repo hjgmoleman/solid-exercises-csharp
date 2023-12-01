@@ -14,6 +14,4 @@ public abstract class Student
     public Guid UniversityId { get; private set; }
     public int MonthlyEbookAllowance { get; set; }
     public int CurrentlyBorrowedEbooks { get; private set; } = 0;
-
-    public abstract void AddBonusAllowance();
 }

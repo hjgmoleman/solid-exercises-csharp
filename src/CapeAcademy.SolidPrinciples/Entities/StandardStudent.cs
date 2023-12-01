@@ -1,6 +1,6 @@
 namespace CapeAcademy.SolidPrinciples.Entities;
 
-public class StandardStudent : Student
+public class StandardStudent : LimitedStudent
 {
     public StandardStudent(string emailAddress, Guid universityId)
         : base(emailAddress, universityId)
