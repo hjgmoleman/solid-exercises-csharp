@@ -3,7 +3,7 @@ using CapeAcademy.SolidPrinciples.Repositories;
 
 namespace CapeAcademy.SolidPrinciples.Services;
 
-public class StudentService
+public class StudentService : IStudentQueryService, IStudentPersistService, IStudentAllowanceService
 {
     public bool Add(string? emailAddress, Guid universityId)
     {
