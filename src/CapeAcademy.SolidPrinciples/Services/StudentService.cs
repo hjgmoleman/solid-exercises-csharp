@@ -33,7 +33,16 @@ public class StudentService
  
         return true;
     }
-     
+    
+    public void AddBonusAllowances(University university)
+    {
+        var students = GetStudentsByUniversity(university.Id);
+        foreach (var student in students)
+        {
+            student.AddBonusAllowance();
+        }
+    }
+   
     public List<Student> GetStudentsByUniversity(Guid universityId)
     {
         return new();

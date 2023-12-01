@@ -6,6 +6,12 @@ public class StudentFactory
 {
     public Student CreateStudent(string emailAddress, University university)
     {
-        return new Student(emailAddress, university.Id, university.UniversityPackage);
+        var package = university.UniversityPackage;
+        if (package == UniversityPackage.Premium)
+        {
+            return new PremiumStudent(emailAddress, university.Id);
+        }
+
+        return new StandardStudent(emailAddress, university.Id);
     }
 }
