@@ -3,5 +3,6 @@ namespace CapeAcademy.SolidPrinciples.Entities;
 public enum UniversityPackage
 {
     Standard = 0,
-    Premium = 1
+    Premium = 1,
+    Unlimited = 2
 }

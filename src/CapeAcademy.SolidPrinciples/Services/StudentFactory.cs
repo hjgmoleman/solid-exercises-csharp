@@ -12,6 +12,11 @@ public class StudentFactory
             return new PremiumStudent(emailAddress, university.Id);
         }
 
+        if (package == UniversityPackage.Unlimited)
+        {
+            return new UnlimitedStudent(emailAddress, university.Id);
+        }
+
         return new StandardStudent(emailAddress, university.Id);
     }
 }
