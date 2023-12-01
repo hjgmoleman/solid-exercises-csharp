@@ -5,31 +5,43 @@ namespace CapeAcademy.SolidPrinciples.Services;
 
 public class StudentService : IStudentQueryService, IStudentPersistService, IStudentAllowanceService
 {
+    private readonly IStudentRepository _studentRepository;
+    private readonly IUniversityReadRepository _universityRepository;
+    private readonly IStudentFactory _studentFactory;
+    private readonly ILogger _logger;
+
+    public StudentService(
+        IStudentRepository studentRepository,
+        IUniversityReadRepository universityRepository,
+        IStudentFactory studentFactory, 
+        ILogger logger)
+    {
+        _studentRepository = studentRepository;
+        _universityRepository = universityRepository;
+        _studentFactory = studentFactory;
+        _logger = logger;
+    }
+    
     public bool Add(string? emailAddress, Guid universityId)
     {
-        var logger = new Logger();
-        logger.LogMessage("Log: Start add student with email '{0}'", emailAddress);
+        _logger.LogMessage("Log: Start add student with email '{0}'", emailAddress);
 
         if ("".Equals(emailAddress) || emailAddress == null)
         {
             return false;
         }
- 
-        var studentRepository = new StudentRepository();
-        if (studentRepository.Exists(emailAddress))
+        
+        if (_studentRepository.Exists(emailAddress))
         {
             return false;
         }
- 
-        var universityRepository = new UniversityRepository();
-        var university = universityRepository.GetById(universityId);
-
-        var studentFactory = new StudentFactory();
-        var student = studentFactory.CreateStudent(emailAddress, university);
+        
+        var university = _universityRepository.GetById(universityId);
+        var student = _studentFactory.CreateStudent(emailAddress, university);
          
-        studentRepository.Add(student);
+        _studentRepository.Add(student);
  
-        logger.LogMessage("Log: End add student with email '{0}'", emailAddress);
+        _logger.LogMessage("Log: End add student with email '{0}'", emailAddress);
  
         return true;
     }
@@ -39,9 +51,9 @@ public class StudentService : IStudentQueryService, IStudentPersistService, IStu
         var students = GetStudentsByUniversity(university.Id);
         foreach (var student in students)
         {
-            if (student is LimitedStudent limitedStudent)
+            if (student is IBonusAllowable bonusAllowable)
             {
-                limitedStudent.AddBonusAllowance();
+                bonusAllowable.AddBonusAllowance();
             }
         }
     }

@@ -12,6 +12,6 @@ public abstract class Student
     
     public string EmailAddress { get; private set; }
     public Guid UniversityId { get; private set; }
-    public int MonthlyEbookAllowance { get; set; }
+    
     public int CurrentlyBorrowedEbooks { get; private set; } = 0;
 }

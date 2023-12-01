@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapeAcademy.SolidPrinciples", "CapeAcademy.SolidPrinciples\CapeAcademy.SolidPrinciples.csproj", "{D7590A78-0020-441B-9E59-DCCE956D40A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapeAcademy.SolidPrinciples.Core", "CapeAcademy.SolidPrinciples.Core\CapeAcademy.SolidPrinciples.Core.csproj", "{17FF9B47-EDCD-4EB8-8751-CAD5B0D17503}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{D7590A78-0020-441B-9E59-DCCE956D40A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7590A78-0020-441B-9E59-DCCE956D40A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7590A78-0020-441B-9E59-DCCE956D40A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17FF9B47-EDCD-4EB8-8751-CAD5B0D17503}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17FF9B47-EDCD-4EB8-8751-CAD5B0D17503}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17FF9B47-EDCD-4EB8-8751-CAD5B0D17503}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17FF9B47-EDCD-4EB8-8751-CAD5B0D17503}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
