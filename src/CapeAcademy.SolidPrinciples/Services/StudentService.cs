@@ -6,8 +6,9 @@ namespace CapeAcademy.SolidPrinciples.Services;
 public class StudentService
 {
     public bool Add(string? emailAddress, Guid universityId)
-    {       
-        Console.WriteLine("Log: Start add student with email '{0}'", emailAddress);
+    {
+        var logger = new Logger();
+        logger.LogMessage("Log: Start add student with email '{0}'", emailAddress);
 
         if ("".Equals(emailAddress) || emailAddress == null)
         {
@@ -22,20 +23,13 @@ public class StudentService
  
         var universityRepository = new UniversityRepository();
         var university = universityRepository.GetById(universityId);
- 
-        var student = new Student(emailAddress, university.Id);
-        if (university.UniversityPackage == UniversityPackage.Standard)
-        {
-            student.MonthlyEbookAllowance = 10;
-        }
-        else if (university.UniversityPackage == UniversityPackage.Premium)
-        {
-            student.MonthlyEbookAllowance = 10 * 2;
-        }                           
+
+        var studentFactory = new StudentFactory();
+        var student = studentFactory.CreateStudent(emailAddress, university);
          
         studentRepository.Add(student);
  
-        Console.WriteLine("Log: End add student with email '{0}'", emailAddress);
+        logger.LogMessage("Log: End add student with email '{0}'", emailAddress);
  
         return true;
     }
